@@ -1,0 +1,9 @@
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.drawing-option {
+    height: 50px;
+    display: inline;
+}

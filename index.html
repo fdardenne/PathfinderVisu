@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Pathfinder Algorithms</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head> 
+
+    <body>
+        <div class="drawing-option">
+            <label>Draw:</label><br>
+
+            <label>
+                <input type="radio" name="draw" value="void"/>Void
+            </label>
+            <label>
+                <input type="radio" name="draw" value="wall" checked="checked"/>Wall
+            </label>
+            <label>
+                <input type="radio" name="draw" value="start"/>Start
+            </label>
+
+            <label>
+                <input type="radio" name="draw" value="goal"/>Goal
+            </label>
+
+            <select name="algo" id="algo">
+                <!-- <option value="">--Please select an algorithm--</option> -->
+                <!-- <option value="A">A*</option> -->
+                <option value="BFS">BFS</option>
+                <option value="DFS">DFS</option>
+                <!-- <option value="DFS">Hamster</option>
+                <option value="GreedyBFS">GreedyBFS</option>
+                <option value="Uniform">Uniform Search</option> -->
+            </select>
+            <button>Start</button>
+        </div>
+
+        <canvas id="mainCanvas"></canvas>
+    </body>
+    <script src="algorithms.js"></script>
+    <script src="maze.js"></script>
+</html>
