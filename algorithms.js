@@ -169,3 +169,42 @@ function astar(problem){
     }
     return "fail";
 }
+
+
+function greedyBFS(problem){
+    function h(node){
+        let state = node.state;
+        let goal_x, goal_y;
+        [goal_x, goal_y] = problem.goals;
+        let x,y;
+        [x,y] = state.positions.start;
+        return Math.abs(goal_x - x) + Math.abs(goal_y - y);
+    }
+
+    function cost(node){
+        return h(node);
+    }
+    var node = new Node(problem.initial_state(), 0, null, "init");
+    var priorityQueueHeuristics = new BinaryHeap((x) => cost(x));
+    //let priorityQueueHeuristics = new PriorityQueue((a, b) => cost(a) > cost(b));
+    priorityQueueHeuristics.push(node);
+    let reached = {};
+    reached[node.state.positions.start] = true;
+
+    while(priorityQueueHeuristics.size() >0){
+        console.log(priorityQueueHeuristics);
+        node = priorityQueueHeuristics.pop();
+        waitingDrawQueue.push([node.state.positions.start[0], node.state.positions.start[1],"#129490"])
+        if(problem.is_goal(node.state)) return node;
+        let expandd = expand(problem, node);
+
+        expandd.forEach(node => {
+            if(!(node.state.positions.start in reached)){
+                priorityQueueHeuristics.push(node);
+                waitingDrawQueue.push([node.state.positions.start[0], node.state.positions.start[1], "#FFFFFF"])
+                reached[node.state.positions.start] = true;
+            }
+        });
+    }
+    return "fail";
+}
