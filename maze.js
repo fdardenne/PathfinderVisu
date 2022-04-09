@@ -14,7 +14,8 @@ colors = {
 
 algo = {
     "BFS":bfs,
-    "DFS":dfs
+    "DFS":dfs,
+    "A":astar
 }
 
 positions = {}
